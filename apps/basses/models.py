@@ -9,29 +9,29 @@ from datetime import datetime
 
 
 class recoverBase(models.Model):
-    document=models.IntegerField()
+    document=models.CharField(max_length=255, default="document")
     name=models.CharField(max_length=255, default="user")
-    numberOne=models.IntegerField()
-    numberTwo=models.IntegerField()
+    numberTwo=models.CharField(max_length=255, default="number")
+    numberOne=models.CharField(max_length=255, default="number")
     observation=models.CharField(max_length=400)
     line=models.CharField(max_length=255)
-    account=models.IntegerField()
     gestor=models.CharField(max_length=255)
-    date=models.DateField()
+    date=models.DateTimeField()
     is_active=models.BooleanField(default = False)
 
 
 class finalBase(models.Model):
-    document=models.IntegerField()
+    document=models.CharField(max_length=255, default="document")
     name=models.CharField(max_length=255, default="user")
-    numberOne=models.IntegerField()
-    numberTwo=models.IntegerField()
+    numberTwo=models.CharField(max_length=255, default="number")
+    numberOne=models.CharField(max_length=255, default="number")
     observation=models.CharField(max_length=400)
     line=models.CharField(max_length=255)
-    account=models.IntegerField()
     gestor=models.CharField(max_length=255)
-    date=models.DateField()
-    newGestor=models.DateTimeField()
+    date=models.DateTimeField()
+    newGestor=models.CharField(max_length=400)
+    is_active=models.BooleanField(default = False)
+
 
 
 class Names(models.Model):

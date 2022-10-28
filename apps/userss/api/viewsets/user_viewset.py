@@ -4,11 +4,11 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser, MultiPartParser
 from apps.userss.authentication_mixin  import Authentication
 from apps.userss.api.serializers import UsersSerializer,UpdateUserSerializer,UpdateUserPswdSerializer,UsersCreateSerializer
-from apps.basses.api.serializers import RolsSerializers, CampaignSerializers
+from apps.basses.api.serializers import RolsSerializers, CampaignSerializers,NamesSerializers
 # from apps.userss.api.serializers import UserRegisterSerializer
 from django.shortcuts import get_object_or_404
 from apps.userss.models import User
-from apps.basses.models import Rols, Campaign
+from apps.basses.models import Rols, Campaign,Names
 
 class UserViewSet(Authentication,viewsets.ModelViewSet):
     serializer_class= UsersSerializer
@@ -19,6 +19,7 @@ class UserViewSet(Authentication,viewsets.ModelViewSet):
     parser_classes=(JSONParser,MultiPartParser)
     model = User
     model2 = Rols
+    model2 = Names
 
     def get_queryset(self, pk=None):
         if pk is None:
@@ -44,10 +45,10 @@ class UserViewSet(Authentication,viewsets.ModelViewSet):
             var=i[0]
             data[var]=i[1]
 
-        id_rol=request.data['document']
-        rol= Rols.objects.filter(id=id_rol).first()
-        rol_serializer= RolsSerializers(rol)
-        data['rol']=str(rol_serializer.data['spanish_name'])
+        id_document=int(request.data['document'])
+        document= Names.objects.filter(document=id_document).first()
+        document_serializer= NamesSerializers(document)
+        data['name']=str(document_serializer.data['name'])
 
         id_rol=request.data['id_rol']
         rol= Rols.objects.filter(id=id_rol).first()

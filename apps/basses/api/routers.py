@@ -5,6 +5,7 @@ from apps.basses.api.viewsets.bases_viewsets import *
 
 router=DefaultRouter()
 router.register(r'recover',recoverViewset,basename='endpoint recover gtc')
+router.register(r'finalbase',finalbaseViewset,basename='endpoint final base gtc')
 # router.register(r'enviar/gtc',enviarGTCViewSet,basename='endpoint enviar gtc')
 # router.register(r'recibida/gesucs',recibidaGesUcsViewset,basename='endpoint recibida gesucs')
 # router.register(r'enviar/gesucs',enviarGesUcsViewset,basename='endpoint enviar gesucs')

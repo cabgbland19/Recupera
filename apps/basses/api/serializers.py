@@ -7,7 +7,7 @@ class recoverBaseSerializers(serializers.ModelSerializer):
         model=recoverBase
         fields='__all__'
 
-class finalBase(serializers.ModelSerializer):
+class finalBaseSerializer(serializers.ModelSerializer):
     class Meta:
         model=finalBase
         fields='__all__'
